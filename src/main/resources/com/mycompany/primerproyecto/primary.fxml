@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="703.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.primerproyecto.PrimaryController">
+   <children>
+      <ImageView fx:id="imagen" fitHeight="422.0" fitWidth="293.0" layoutX="362.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane layoutX="8.0" layoutY="7.0" prefHeight="406.0" prefWidth="376.0" style="-fx-border-color: #6E81A2; -fx-border-radius: 5; -fx-border-width: 3; -fx-background-color: #262B38; -fx-background-radius: 5;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="319.0" AnchorPane.topAnchor="7.0">
+         <children>
+            <Text fill="WHITE" layoutX="14.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INICIAR SESIÓN" textAlignment="CENTER" wrappingWidth="279.00732421875">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="23.0" />
+               </font>
+            </Text>
+            <TextField fx:id="name" layoutX="62.0" layoutY="152.0" prefHeight="25.0" prefWidth="206.0" promptText="Nombre de usuario" />
+            <PasswordField fx:id="pass" layoutX="62.0" layoutY="232.0" prefHeight="25.0" prefWidth="206.0" />
+            <Button fx:id="login" layoutX="115.0" layoutY="279.0" mnemonicParsing="false" onAction="#verificar" prefHeight="25.0" prefWidth="101.0" text="LOGIN">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="resusuario" layoutX="69.0" layoutY="361.0" prefHeight="17.0" prefWidth="199.0" textFill="#a89e9e" />
+            <Button layoutX="115.0" layoutY="315.0" mnemonicParsing="false" onAction="#switchToSecondary" prefHeight="25.0" prefWidth="101.0" text="REGISTER">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
