@@ -21,15 +21,15 @@
                   <Font name="Arial Rounded MT Bold" size="23.0" />
                </font>
             </Text>
-            <TextField fx:id="name" layoutX="63.0" layoutY="139.0" prefHeight="25.0" prefWidth="206.0" promptText="Nombre de usuario" />
-            <PasswordField fx:id="pass" layoutX="63.0" layoutY="203.0" prefHeight="25.0" prefWidth="206.0" />
+            <TextField fx:id="name" layoutX="63.0" layoutY="139.0" prefHeight="25.0" prefWidth="206.0" promptText="Nombre de usuario" text="Pruebas" />
+            <PasswordField fx:id="pass" layoutX="63.0" layoutY="203.0" prefHeight="25.0" prefWidth="206.0" text="lalalala07" />
             <Button layoutX="45.0" layoutY="337.0" mnemonicParsing="false" onAction="#inicio" prefHeight="25.0" prefWidth="101.0" text="BACK">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </Button>
             <Label fx:id="resusuario" layoutX="67.0" layoutY="302.0" prefHeight="17.0" prefWidth="199.0" textFill="#a89e9e" />
-            <Button layoutX="192.0" layoutY="337.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="REGISTER">
+            <Button layoutX="192.0" layoutY="337.0" mnemonicParsing="false" onAction="#registrarse" prefHeight="25.0" prefWidth="101.0" text="REGISTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
@@ -37,7 +37,7 @@
             <Text fill="WHITE" layoutX="63.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuevo nombre de usuario" wrappingWidth="199.0" />
             <Text fill="WHITE" layoutX="63.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Establer contraseña" wrappingWidth="199.0" />
             <Text fill="WHITE" layoutX="63.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Introducir correo electrónico" wrappingWidth="199.0" />
-            <TextField fx:id="name1" layoutX="60.0" layoutY="261.0" prefHeight="25.0" prefWidth="206.0" promptText="ejemplo@gmail.com" />
+            <TextField fx:id="correo" layoutX="60.0" layoutY="261.0" prefHeight="25.0" prefWidth="206.0" promptText="ejemplo@gmail.com" text="ejemplo@gmail.com" />
          </children>
       </AnchorPane>
    </children>

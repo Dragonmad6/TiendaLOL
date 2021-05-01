@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.primerproyecto;
+package com.mycompany.entidades;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  *
  * @author Carlos C
  */
 public class Usuario {
+
     
     private String nombre;
     private String password;
