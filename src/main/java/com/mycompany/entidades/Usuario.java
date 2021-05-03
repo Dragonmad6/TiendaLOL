@@ -5,9 +5,6 @@
  */
 package com.mycompany.entidades;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 /**
  *
  * @author Carlos C
@@ -28,6 +25,11 @@ public class Usuario {
         this.nombre = nombre;
         this.password = password;
         this.email  = email;
+    }
+
+    public Usuario(String nombre, String password){
+        this.nombre = nombre;
+        this.password = password;
     }
 
     //Getter y Setters

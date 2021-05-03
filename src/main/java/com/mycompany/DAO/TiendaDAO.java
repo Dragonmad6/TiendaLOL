@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -44,5 +45,19 @@ public class TiendaDAO {
         sentencia.setString(2, u.getPassword());
         sentencia.setString(3, u.getEmail());
         sentencia.executeUpdate();
+    }
+    public boolean LogearUsuario (Usuario u) throws SQLException,ClassNotFoundException, IOException{
+        String sql = "SELECT * FROM tiendalol.login WHERE nombre = ? AND contrasena = ?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, u.getNombre());
+        sentencia.setString(2, u.getPassword());
+        sentencia.executeUpdate();
+         
+        ResultSet result = sentencia.executeQuery();
+        boolean resultado = false;
+        while (result.next()){
+            resultado = true;
+        }
+        return resultado;
     }
 }
