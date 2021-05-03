@@ -29,7 +29,6 @@
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="resusuario" layoutX="69.0" layoutY="361.0" prefHeight="17.0" prefWidth="199.0" textFill="#a89e9e" />
             <Button layoutX="115.0" layoutY="315.0" mnemonicParsing="false" onAction="#switchToSecondary" prefHeight="25.0" prefWidth="101.0" text="REGISTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
