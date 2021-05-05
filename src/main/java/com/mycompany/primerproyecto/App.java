@@ -53,4 +53,16 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
+    static void loadMercado() throws IOException {
+        String fxml = "mercado";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        MercadoController controller = new MercadoController();
+        fxmlLoader.setController(controller);
+        
+        scene.setRoot(fxmlLoader.load());
+        controller.verLista();
+
+    }
 }

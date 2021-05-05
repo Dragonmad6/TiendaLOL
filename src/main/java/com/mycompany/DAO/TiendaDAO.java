@@ -5,6 +5,7 @@
  */
 package com.mycompany.DAO;
 
+import com.mycompany.entidades.Objeto;
 import com.mycompany.entidades.Usuario;
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,6 +13,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -46,6 +49,8 @@ public class TiendaDAO {
         sentencia.setString(3, u.getEmail());
         sentencia.executeUpdate();
     }
+    /*SELECT del usuario para logearse*/
+    
     public boolean LogearUsuario (Usuario u) throws SQLException,ClassNotFoundException, IOException{
         String sql = "SELECT * FROM tiendalol.login WHERE nombre = ? AND contrasena = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -59,5 +64,21 @@ public class TiendaDAO {
             resultado = true;
         }
         return resultado;
+    }
+    /*SELECTS de la lista de objetos que hay en la base de datos*/
+    
+    public List<Objeto> items() throws SQLException{
+        List<Objeto> objetosExterno = new ArrayList<>();
+        String sql = "SELECT t.tipo,i.nombre FROM items i INNER JOIN tipoitem t ON i.tipo = t.idtipo";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        ResultSet resultado = sentencia.executeQuery();
+        /*Bucle para mostrar todos los objetos*/
+        while (resultado.next()){   
+            Objeto objetoInterno = new Objeto();
+            objetoInterno.setTipo(resultado.getString(1));
+            objetoInterno.setNombre(resultado.getString(2));
+            objetosExterno.add(objetoInterno);
+        }
+        return objetosExterno;
     }
 }
