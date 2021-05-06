@@ -18,10 +18,10 @@
                   <Font name="Arial Rounded MT Bold" size="23.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="53.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuevo nombre de usuario" wrappingWidth="199.0" />
+            <Text fill="WHITE" layoutX="34.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción" wrappingWidth="199.0" />
             <Text fill="WHITE" layoutX="382.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" wrappingWidth="199.0" />
-            <Text fill="WHITE" layoutX="53.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Objetos" wrappingWidth="199.0" />
-            <ListView fx:id="verLista" layoutX="52.0" layoutY="138.0" prefHeight="142.0" prefWidth="271.0" />
+            <Text fill="WHITE" layoutX="34.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Objetos" wrappingWidth="199.0" />
+            <ListView fx:id="lista" layoutX="35.0" layoutY="139.0" prefHeight="142.0" prefWidth="328.0" />
             <Button layoutX="419.0" layoutY="343.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="126.0" text="BORRAR CUENTA">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
@@ -32,6 +32,8 @@
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </Button>
+            <TextArea fx:id="descripcion" layoutX="34.0" layoutY="319.0" prefHeight="75.0" prefWidth="260.0" />
+            <TextField fx:id="precio" layoutX="442.0" layoutY="102.0" />
          </children>
       </AnchorPane>
    </children>

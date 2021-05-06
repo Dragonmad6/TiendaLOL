@@ -39,7 +39,7 @@ public class PrimaryController {
             tienda.conectar();
             boolean pruebalogin = tienda.LogearUsuario(u);
             if (pruebalogin) {
-                App.setRoot("mercado");
+                App.loadMercado();
             } else {
                 AlertaUtil.mostrarError("Nombre de usuario o contraseña incorrecto.");
             }

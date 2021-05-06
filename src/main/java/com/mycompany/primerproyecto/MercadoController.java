@@ -16,9 +16,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -28,19 +31,20 @@ import javafx.scene.control.ListView;
 public class MercadoController{
 
     @FXML
-    private ListView Items;
-    private static TiendaDAO a;
-    
+    private ListView lista;
     @FXML
-    public void verLista() throws SQLException {
-        Items.setItems(relleno());
-        
-    }     
-    public ObservableList relleno() throws SQLException{
+    private TextArea descrip;
+    @FXML
+    private TextField precio;
+    
+    private static TiendaDAO a;
+    private Objeto objSel;
+    
+
+    public void relleno() throws SQLException{
         TiendaDAO a = new TiendaDAO();
         try {
             a.conectar();
-
         } catch (SQLException ex) {
             Logger.getLogger(MercadoController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -48,9 +52,20 @@ public class MercadoController{
         } catch (IOException ex) {
             Logger.getLogger(MercadoController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ObservableList<Objeto> recursos = FXCollections.observableArrayList(a.items());
-        
-        return recursos;
+        List<Objeto> recursos = a.items();
+        lista.setItems(FXCollections.observableList(recursos));
+    }
+    
+    @FXML
+    private void cargarObjeto(Objeto obj) {
+        precio.setText(obj.getPrecio());
+        descrip.setText(obj.getDescripcion());
+    }
+    
+    @FXML
+    public void seleccionarObjeto(Event event) {
+        objSel = (Objeto)lista.getSelectionModel().getSelectedItem();
+        cargarObjeto(objSel);
     }
     
 }

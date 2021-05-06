@@ -1,6 +1,7 @@
 package com.mycompany.primerproyecto;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -53,7 +54,7 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-    static void loadMercado() throws IOException {
+    static void loadMercado() throws IOException, SQLException {
         String fxml = "mercado";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
@@ -62,7 +63,6 @@ public class App extends Application {
         fxmlLoader.setController(controller);
         
         scene.setRoot(fxmlLoader.load());
-        controller.verLista();
-
+        controller.relleno();
     }
 }

@@ -7,6 +7,9 @@ package com.mycompany.DAO;
 
 import com.mycompany.entidades.Objeto;
 import com.mycompany.entidades.Usuario;
+import com.mycompany.primerproyecto.App;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
  *
@@ -24,15 +28,19 @@ public class TiendaDAO {
     
     private Connection conexion;
     
-    public void conectar() throws ClassNotFoundException, SQLException, IOException{
-        String host = "localhost";
-        String port = "3306";
-        String dbname = "tiendalol";
-        String username = "root";
-        String password = "01478520";
-            conexion = DriverManager.getConnection("jdbc:mariadb://" + host + ":" + port + "/" + dbname + "?serverTimezone=UTC",
+
+    public void conectar() throws ClassNotFoundException, SQLException, IOException {
+        
+        Properties configuration = new Properties();
+        configuration.load(new FileInputStream(new File(App.class.getResource("connectionDB.properties").getPath())));
+        String host = configuration.getProperty("host");
+        String port = configuration.getProperty("port");
+        String name = configuration.getProperty("name");
+        String username = configuration.getProperty("username");
+        String password = configuration.getProperty("password");
+
+        conexion = DriverManager.getConnection("jdbc:mariadb://" + host + ":" + port + "/" + name + "?serverTimezone=UTC",
                 username, password);
-                
     }
     
     public void desconectar() throws SQLException{
@@ -81,4 +89,5 @@ public class TiendaDAO {
         }
         return objetosExterno;
     }
+    
 }
