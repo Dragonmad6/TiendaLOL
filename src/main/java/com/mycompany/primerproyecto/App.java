@@ -32,6 +32,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
     }*/
+    
     static void loadImage2() throws IOException {
         String fxml = "secondary";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));

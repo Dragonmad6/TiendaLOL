@@ -77,14 +77,17 @@ public class TiendaDAO {
     
     public List<Objeto> items() throws SQLException{
         List<Objeto> objetosExterno = new ArrayList<>();
-        String sql = "SELECT t.tipo,i.nombre FROM items i INNER JOIN tipoitem t ON i.tipo = t.idtipo";
+        String sql = "SELECT t.tipo,i.nombre,i.precio,i.descripcion,i.foto FROM items i INNER JOIN tipoitem t ON i.tipo = t.idtipo";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         ResultSet resultado = sentencia.executeQuery();
         /*Bucle para mostrar todos los objetos*/
-        while (resultado.next()){   
+        while (resultado.next()){
             Objeto objetoInterno = new Objeto();
             objetoInterno.setTipo(resultado.getString(1));
             objetoInterno.setNombre(resultado.getString(2));
+            objetoInterno.setPrecio(resultado.getString(3));
+            objetoInterno.setDescripcion(resultado.getString(4));
+            objetoInterno.setImagen(resultado.getString(5));
             objetosExterno.add(objetoInterno);
         }
         return objetosExterno;

@@ -8,20 +8,18 @@ package com.mycompany.primerproyecto;
 import com.mycompany.DAO.TiendaDAO;
 import com.mycompany.entidades.Objeto;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -33,9 +31,11 @@ public class MercadoController{
     @FXML
     private ListView lista;
     @FXML
-    private TextArea descrip;
+    private TextArea descripcion;
     @FXML
     private TextField precio;
+    @FXML
+    private ImageView imagen;
     
     private static TiendaDAO a;
     private Objeto objSel;
@@ -58,8 +58,10 @@ public class MercadoController{
     
     @FXML
     private void cargarObjeto(Objeto obj) {
+        Image img = new Image(getClass().getResourceAsStream(obj.getImagen()));
         precio.setText(obj.getPrecio());
-        descrip.setText(obj.getDescripcion());
+        descripcion.setText(obj.getDescripcion());
+        imagen.setImage(img);
     }
     
     @FXML
