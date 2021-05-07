@@ -12,7 +12,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="703.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.primerproyecto.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#mostrar" prefHeight="420.0" prefWidth="703.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.primerproyecto.PrimaryController">
    <children>
       <ImageView fx:id="imagen" fitHeight="422.0" fitWidth="293.0" layoutX="362.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane layoutX="8.0" layoutY="7.0" prefHeight="406.0" prefWidth="376.0" style="-fx-border-color: #6E81A2; -fx-border-radius: 5; -fx-border-width: 3; -fx-background-color: #262B38; -fx-background-radius: 5;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="319.0" AnchorPane.topAnchor="7.0">

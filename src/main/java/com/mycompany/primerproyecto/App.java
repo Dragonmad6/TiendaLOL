@@ -43,6 +43,7 @@ public class App extends Application {
         scene.setRoot(fxmlLoader.load());
         controller.loadImage();
     }
+   
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }

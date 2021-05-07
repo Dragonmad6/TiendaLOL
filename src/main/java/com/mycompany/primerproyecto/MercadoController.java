@@ -37,6 +37,7 @@ public class MercadoController{
     @FXML
     private ImageView imagen;
     
+    
     private static TiendaDAO a;
     private Objeto objSel;
     
@@ -68,6 +69,14 @@ public class MercadoController{
     public void seleccionarObjeto(Event event) {
         objSel = (Objeto)lista.getSelectionModel().getSelectedItem();
         cargarObjeto(objSel);
+    }
+    @FXML
+    private void atras() throws IOException {
+        App.setRoot("primary");
+    }
+    @FXML
+    private void opciones() throws IOException {
+        App.setRoot("opciones");
     }
     
 }

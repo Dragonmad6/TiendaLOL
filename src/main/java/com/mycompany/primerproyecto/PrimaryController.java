@@ -24,12 +24,16 @@ public class PrimaryController {
     @FXML
     private ImageView imagen;
 
-
+    @FXML
     public void loadImage() {
         Image img = new Image(getClass().getResourceAsStream("/images/cliente3.jpg"));
         imagen.setImage(img);
     }
-
+    @FXML
+    public void mostrar(){
+        Image img = new Image(getClass().getResourceAsStream("/images/cliente3.jpg"));
+        imagen.setImage(img);
+    }
     public void login() throws SQLException, ClassNotFoundException, IOException {
         TiendaDAO tienda = new TiendaDAO();
         Usuario u = new Usuario();
