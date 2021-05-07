@@ -22,19 +22,26 @@
             <Text fill="WHITE" layoutX="383.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" wrappingWidth="199.0" />
             <Text fill="WHITE" layoutX="34.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Objetos" wrappingWidth="199.0" />
             <ListView fx:id="lista" layoutX="35.0" layoutY="139.0" onMouseClicked="#seleccionarObjeto" prefHeight="142.0" prefWidth="328.0" />
-            <Button layoutX="463.0" layoutY="33.0" mnemonicParsing="false" onAction="#opciones" prefHeight="25.0" prefWidth="92.0" text="OPCIONES">
+            <Button layoutX="427.0" layoutY="33.0" mnemonicParsing="false" onAction="#opciones" prefHeight="25.0" prefWidth="92.0" text="OPCIONES">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </Button>
-            <TextArea fx:id="descripcion" layoutX="34.0" layoutY="319.0" prefHeight="75.0" prefWidth="260.0" />
-            <TextField fx:id="precio" layoutX="441.0" layoutY="111.0" />
-            <ImageView fx:id="imagen" fitHeight="136.0" fitWidth="163.0" layoutX="427.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true" />
+            <TextArea fx:id="descripcion" editable="false" layoutX="34.0" layoutY="319.0" prefHeight="75.0" prefWidth="328.0" wrapText="true" />
+            <TextField fx:id="precio" editable="false" layoutX="441.0" layoutY="111.0" />
             <Button layoutX="434.0" layoutY="332.0" mnemonicParsing="false" onAction="#atras" prefHeight="25.0" prefWidth="121.0" text="CERRAR SESIÓN">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </Button>
+            <AnchorPane layoutX="422.0" layoutY="155.0" prefHeight="163.0" prefWidth="173.0" style="-fx-background-color: #000; -fx-border-color: #6E81A2; -fx-border-width: 3;">
+               <children>
+                  <Text fill="WHITE" layoutX="61.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OBJETO" wrappingWidth="49.0" />
+                  <Text fill="WHITE" layoutX="72.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NO" wrappingWidth="26.0" />
+                  <Text fill="WHITE" layoutX="39.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECCIONADO" wrappingWidth="92.0" />
+                  <ImageView fx:id="imagen" fitHeight="120.0" fitWidth="121.0" layoutX="25.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
