@@ -67,4 +67,14 @@ public class App extends Application {
         scene.setRoot(fxmlLoader.load());
         controller.relleno();
     }
+    static void loadOpciones() throws IOException {
+        String fxml = "opciones";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        OpcionesController controller = new OpcionesController();
+        fxmlLoader.setController(controller);
+        scene.setRoot(fxmlLoader.load());
+        controller.loadImage1();
+    }
 }

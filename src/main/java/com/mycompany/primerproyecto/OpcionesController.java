@@ -6,11 +6,10 @@
 package com.mycompany.primerproyecto;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.sql.SQLException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -24,8 +23,7 @@ public class OpcionesController{
     
     @FXML
     private ImageView image;
-    @FXML
-    private Button tomercado;
+    
     
     @FXML
     public void loadImage1() {
@@ -34,7 +32,14 @@ public class OpcionesController{
     }
     
     @FXML
-    private void atras2() throws IOException {
-        App.setRoot("mercado");
+    private void atras2() throws IOException, SQLException {
+        App.loadMercado();
+    }
+    
+    @FXML
+    private void Hyper(ActionEvent e){
+        Hyperlink link = new Hyperlink("/Formulario/Formulario.html");
+        App.class.getResource("/Formulario/Formulario.html");
+        
     }
 }

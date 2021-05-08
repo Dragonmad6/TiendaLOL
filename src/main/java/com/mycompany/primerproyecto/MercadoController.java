@@ -76,7 +76,7 @@ public class MercadoController{
     }
     @FXML
     private void opciones() throws IOException {
-        App.setRoot("opciones");
+        App.loadOpciones();
     }
     
 }
