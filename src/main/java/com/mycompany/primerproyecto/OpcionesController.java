@@ -40,6 +40,5 @@ public class OpcionesController{
     private void Hyper(ActionEvent e){
         Hyperlink link = new Hyperlink("/Formulario/Formulario.html");
         App.class.getResource("/Formulario/Formulario.html");
-        
     }
 }
