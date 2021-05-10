@@ -41,12 +41,26 @@ public class PrimaryController {
         u = new Usuario(name.getText(), pass.getText());
         try {
             tienda.conectar();
-            boolean pruebalogin = tienda.LogearUsuario(u);
-            if (pruebalogin) {
-                App.loadMercado();
-            } else {
+            Usuario us = new Usuario();
+            us  = tienda.LogearUsuario(u);
+            String nombre = "carlosc";
+            String password = "01478520C";
+
+            if(name.getText().equals(nombre) && pass.getText().equals(password)){
+                App.loadMercadoAdmin();
+            }
+            else if(name.getText().equals(us.getNombre()) && pass.getText().equals(us.getPassword())){
+              App.loadMercado();
+            }
+        else{
                 AlertaUtil.mostrarError("Nombre de usuario o contraseña incorrecto.");
             }
+//            boolean pruebalogin = tienda.LogearUsuario(u);
+//            if (pruebalogin) {
+//                App.loadMercado();
+//            } else {
+//                AlertaUtil.mostrarError("Nombre de usuario o contraseña incorrecto.");
+//            }
         } catch (SQLException sqle) {
             AlertaUtil.mostrarError("El nombre o contraseña son incorrectos." + sqle.getMessage());
         } catch (ClassNotFoundException cnfe) {

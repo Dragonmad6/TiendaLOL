@@ -59,19 +59,32 @@ public class TiendaDAO {
     }
     /*SELECT del usuario para logearse*/
     
-    public boolean LogearUsuario (Usuario u) throws SQLException,ClassNotFoundException, IOException{
+    public Usuario LogearUsuario (Usuario u) throws SQLException,ClassNotFoundException, IOException{
         String sql = "SELECT * FROM tiendalol.login WHERE nombre = ? AND contrasena = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setString(1, u.getNombre());
         sentencia.setString(2, u.getPassword());
-        sentencia.executeUpdate();
-         
-        ResultSet result = sentencia.executeQuery();
-        boolean resultado = false;
-        while (result.next()){
-            resultado = true;
+        ResultSet resultado = sentencia.executeQuery();
+        Usuario us = new Usuario();
+
+        while(resultado.next()){
+            us.setNombre(resultado.getString(1));
+            us.setPassword(resultado.getString(2));
         }
-        return resultado;
+        return us;
+        
+//        String sql = "SELECT * FROM tiendalol.login WHERE nombre = ? AND contrasena = ?";
+//        PreparedStatement sentencia = conexion.prepareStatement(sql);
+//        sentencia.setString(1, u.getNombre());
+//        sentencia.setString(2, u.getPassword());
+//        sentencia.executeUpdate();
+//         
+//        ResultSet result = sentencia.executeQuery();
+//        boolean resultado = false;
+//        while (result.next()){
+//            resultado = true;
+//        }
+//        return resultado;
     }
     /*SELECTS de la lista de objetos que hay en la base de datos*/
     

@@ -28,6 +28,7 @@ import javafx.scene.image.ImageView;
  */
 public class MercadoController{
 
+    
     @FXML
     private ListView lista;
     @FXML

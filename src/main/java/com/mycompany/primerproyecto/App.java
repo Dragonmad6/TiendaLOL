@@ -77,4 +77,24 @@ public class App extends Application {
         scene.setRoot(fxmlLoader.load());
         controller.loadImage1();
     }
+    static void loadAdmin() throws IOException {
+        String fxml = "admin";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        AdminController controller = new AdminController();
+        fxmlLoader.setController(controller);
+        scene.setRoot(fxmlLoader.load());
+        controller.loadImage();
+    }
+    static void loadMercadoAdmin() throws IOException, SQLException {
+        String fxml = "mercadoAdmin";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        mercadoAdminController controller = new mercadoAdminController();
+        fxmlLoader.setController(controller);
+        scene.setRoot(fxmlLoader.load());
+        controller.relleno();
+    }
 }

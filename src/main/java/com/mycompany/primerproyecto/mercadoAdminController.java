@@ -76,7 +76,7 @@ public class mercadoAdminController{
     }
     @FXML
     private void opciones() throws IOException {
-        App.loadOpciones();
+        App.loadAdmin();
     }
     
 }
