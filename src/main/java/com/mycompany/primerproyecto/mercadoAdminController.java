@@ -44,8 +44,11 @@ public class mercadoAdminController{
 
     public void relleno() throws SQLException{
         TiendaDAO a = new TiendaDAO();
+        lista.getItems().clear();
         try {
             a.conectar();
+            List<Objeto> recursos = a.items();
+            lista.setItems(FXCollections.observableList(recursos));
         } catch (SQLException ex) {
             Logger.getLogger(mercadoAdminController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -53,8 +56,7 @@ public class mercadoAdminController{
         } catch (IOException ex) {
             Logger.getLogger(mercadoAdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        List<Objeto> recursos = a.items();
-        lista.setItems(FXCollections.observableList(recursos));
+        
     }
     
     @FXML

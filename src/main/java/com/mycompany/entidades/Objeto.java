@@ -19,13 +19,13 @@ public class Objeto {
     public Objeto() {
     }
 
-    public Objeto(String nombre, String tipo, String precio, String descripcion, String imagen){
-        this.nombre  = nombre;
+    public Objeto(String tipo, String nombre, String precio, String descripcion, String imagen){
         this.tipo = tipo;
+        this.nombre  = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
+        this.imagen = imagen;
     }
-
     public String getImagen() {
         return imagen;
     }
@@ -65,7 +65,8 @@ public class Objeto {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
+    
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -106,4 +106,20 @@ public class TiendaDAO {
         return objetosExterno;
     }
     
+    public void InsertarObjeto (Objeto o) throws SQLException{
+        String sql = "INSERT INTO tiendalol.items (tipo,nombre,precio,descripcion,foto) VALUES (?,?,?,?,?);";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, o.getTipo());
+        sentencia.setString(2, o.getNombre());
+        sentencia.setString(3, o.getPrecio());
+        sentencia.setString(4, o.getDescripcion());
+        sentencia.setString(5, o.getImagen());
+        sentencia.executeUpdate();
+    }
+    public void EliminarObjeto (Objeto o) throws SQLException{
+        String sql = "DELETE FROM tiendalol.items WHERE nombre= ?;";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, o.getNombre());
+        sentencia.executeUpdate();
+    }
 }
