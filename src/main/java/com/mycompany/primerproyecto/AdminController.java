@@ -66,18 +66,18 @@ public class AdminController{
         
    }
    
-   public void eliminar() throws SQLException{
-       TiendaDAO tienda = new TiendaDAO();
-       Objeto o = new Objeto();
-       
-        try{
-            o = new Objeto(name.getText());
-            tienda.conectar();
-            tienda.EliminarObjeto(o);
-            AlertaUtil.mostrarInfo("El objeto ha sido eliminado correctamente");
-        }catch{
-            AlertaUtil.mostrarError("Error al conectar con la base de datos" + sqle.getMessage());
-        }
-        tienda.desconectar();
-   }
+//   public void eliminar() throws SQLException{
+//       TiendaDAO tienda = new TiendaDAO();
+//       Objeto o = new Objeto();
+//       
+//        try{
+//            o = new Objeto(name.getText());
+//            tienda.conectar();
+//            tienda.EliminarObjeto(o);
+//            AlertaUtil.mostrarInfo("El objeto ha sido eliminado correctamente");
+//        }catch{
+//            AlertaUtil.mostrarError("Error al conectar con la base de datos" + sqle.getMessage());
+//        }
+//        tienda.desconectar();
+//   }
 }
