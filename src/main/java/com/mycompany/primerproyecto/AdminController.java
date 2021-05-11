@@ -48,7 +48,8 @@ public class AdminController{
     public void insertar() throws SQLException{
        TiendaDAO tienda = new TiendaDAO();
        Objeto o = new Objeto();
-             
+                    
+     
             try{
             o = new Objeto(type.getText(), name.getText(), price.getText(), descript.getText(), vimage.getText());
             tienda.conectar();

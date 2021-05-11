@@ -10,8 +10,6 @@ import com.mycompany.entidades.Objeto;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -49,12 +47,14 @@ public class mercadoAdminController{
             a.conectar();
             List<Objeto> recursos = a.items();
             lista.setItems(FXCollections.observableList(recursos));
-        } catch (SQLException ex) {
-            Logger.getLogger(mercadoAdminController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(mercadoAdminController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(mercadoAdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }  catch (SQLException sqle) {
+            AlertaUtil.mostrarError("El nombre o contraseña son incorrectos." + sqle.getMessage());
+        } catch (ClassNotFoundException cnfe) {
+            AlertaUtil.mostrarError("Error al iniciar la aplicación" + cnfe.getMessage());
+        } catch (IOException ioe) {
+            AlertaUtil.mostrarError("Error al cargar la aplicación" + ioe.getMessage());
+        } finally {
+            a.desconectar();
         }
         
     }

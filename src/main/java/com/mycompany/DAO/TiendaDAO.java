@@ -72,19 +72,6 @@ public class TiendaDAO {
             us.setPassword(resultado.getString(2));
         }
         return us;
-        
-//        String sql = "SELECT * FROM tiendalol.login WHERE nombre = ? AND contrasena = ?";
-//        PreparedStatement sentencia = conexion.prepareStatement(sql);
-//        sentencia.setString(1, u.getNombre());
-//        sentencia.setString(2, u.getPassword());
-//        sentencia.executeUpdate();
-//         
-//        ResultSet result = sentencia.executeQuery();
-//        boolean resultado = false;
-//        while (result.next()){
-//            resultado = true;
-//        }
-//        return resultado;
     }
     /*SELECTS de la lista de objetos que hay en la base de datos*/
     
@@ -105,7 +92,7 @@ public class TiendaDAO {
         }
         return objetosExterno;
     }
-    
+//   Inserta un objeto con sus caracteristicas en la BD
     public void InsertarObjeto (Objeto o) throws SQLException{
         String sql = "INSERT INTO tiendalol.items (tipo,nombre,precio,descripcion,foto) VALUES (?,?,?,?,?)";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -116,6 +103,7 @@ public class TiendaDAO {
         sentencia.setString(5, o.getImagen());
         sentencia.executeUpdate();
     }
+//    Metodo para eliminar un objeto creado o registrado en al BD.
     public int EliminarObjeto (Objeto o) throws SQLException{
         String sql = "SELECT id FROM items WHERE nombre = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
