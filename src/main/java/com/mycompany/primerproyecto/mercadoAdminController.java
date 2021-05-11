@@ -79,6 +79,7 @@ public class mercadoAdminController{
     @FXML
     private void opciones() throws IOException {
         App.loadAdmin();
+        AlertaUtil.mostrarInfo("Recuerde que al eliminar un objeto solo requiere su nombre.");
     }
     
 }

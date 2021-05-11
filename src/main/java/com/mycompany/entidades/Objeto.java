@@ -67,7 +67,7 @@ public class Objeto extends Cosa {
         StringBuilder sb = new StringBuilder();
         sb.append("").append(tipo);
         sb.append(" | ").append(getNombre());
-        sb.append('.');
         return sb.toString();
     }
+
 }

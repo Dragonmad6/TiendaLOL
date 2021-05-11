@@ -107,7 +107,7 @@ public class TiendaDAO {
     }
     
     public void InsertarObjeto (Objeto o) throws SQLException{
-        String sql = "INSERT INTO tiendalol.items (tipo,nombre,precio,descripcion,foto) VALUES (?,?,?,?,?);";
+        String sql = "INSERT INTO tiendalol.items (tipo,nombre,precio,descripcion,foto) VALUES (?,?,?,?,?)";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setString(1, o.getTipo());
         sentencia.setString(2, o.getNombre());
@@ -116,10 +116,21 @@ public class TiendaDAO {
         sentencia.setString(5, o.getImagen());
         sentencia.executeUpdate();
     }
-    public void EliminarObjeto (Objeto o) throws SQLException{
-        String sql = "DELETE FROM tiendalol.items WHERE id = ?;";
+    public int EliminarObjeto (Objeto o) throws SQLException{
+        String sql = "SELECT id FROM items WHERE nombre = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setString(1, o.getNombre());
+        ResultSet resultado = sentencia.executeQuery();
+        int id = 0;
+        while(resultado.next()){
+            id = resultado.getInt(1);
+        }
+        return id;        
+    }
+    public void EliminaridObjeto (int id) throws SQLException{
+        String sql = "DELETE FROM tiendalol.items WHERE id = ?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, id);
         sentencia.executeUpdate();
     }
 }

@@ -38,7 +38,7 @@
             <TextField fx:id="price" layoutX="33.0" layoutY="275.0" prefHeight="25.0" prefWidth="78.0" />
             <Text fill="WHITE" layoutX="33.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción" wrappingWidth="199.0" />
             <TextArea editable="false" layoutX="265.0" layoutY="150.0" prefHeight="150.0" prefWidth="121.0" style="-fx-border-color: #000;" text="1: Iniciales&#10;2: Pociones&#10;3: Visión&#10;4: Botas&#10;5: Epic Items&#10;6: Legendary Items&#10;7: Mythic Items&#10;&#10;&#10;&#10;" wrapText="true" />
-            <Button layoutX="419.0" layoutY="325.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" style="-fx-background-color: #CAE9F6;" text="ELIMINAR OBJETO">
+            <Button layoutX="419.0" layoutY="325.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="25.0" prefWidth="147.0" style="-fx-background-color: #CAE9F6;" text="ELIMINAR OBJETO">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
@@ -54,7 +54,7 @@
                </font>
             </Button>
             <Text fill="WHITE" layoutX="33.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ruta Imagen" wrappingWidth="199.0" />
-            <TextField fx:id="vimage" layoutX="33.0" layoutY="213.0" prefHeight="25.0" prefWidth="218.0" />
+            <TextField fx:id="vimage" layoutX="33.0" layoutY="213.0" prefHeight="25.0" prefWidth="218.0" text="/objetoimagenes/" />
             <TextArea fx:id="descript" layoutX="33.0" layoutY="337.0" prefHeight="51.0" prefWidth="250.0" />
          </children>
       </AnchorPane>
