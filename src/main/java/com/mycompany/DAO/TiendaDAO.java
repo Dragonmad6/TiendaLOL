@@ -117,7 +117,7 @@ public class TiendaDAO {
         sentencia.executeUpdate();
     }
     public void EliminarObjeto (Objeto o) throws SQLException{
-        String sql = "DELETE FROM tiendalol.items WHERE nombre= ?;";
+        String sql = "DELETE FROM tiendalol.items WHERE id = ?;";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setString(1, o.getNombre());
         sentencia.executeUpdate();
