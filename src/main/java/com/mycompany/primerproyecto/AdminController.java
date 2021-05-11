@@ -65,6 +65,7 @@ public class AdminController{
             }
         
    }
+
    
 //   public void eliminar() throws SQLException{
 //       TiendaDAO tienda = new TiendaDAO();
@@ -80,4 +81,26 @@ public class AdminController{
 //        }
 //        tienda.desconectar();
 //   }
+
+   @FXML
+   public void eliminar() throws SQLException, ClassNotFoundException, IOException{
+       TiendaDAO tienda = new TiendaDAO();
+       Objeto o = new Objeto();
+       
+        try{
+            tienda.conectar();
+            o.setNombre(name.getText());
+            tienda.EliminaridObjeto(tienda.EliminarObjeto(o));
+            
+            AlertaUtil.mostrarInfo("El objeto ha sido eliminado correctamente");
+ 
+        }catch (ClassNotFoundException cnfe){
+                AlertaUtil.mostrarError("Error al iniciar la aplicación" + cnfe.getMessage());
+        }catch (IOException ioe){
+                AlertaUtil.mostrarError("Error al cargar la aplicación" + ioe.getMessage());
+        }finally{
+            tienda.desconectar();
+        }
+   }
+
 }
