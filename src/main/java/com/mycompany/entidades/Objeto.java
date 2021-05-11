@@ -9,53 +9,40 @@ package com.mycompany.entidades;
  *
  * @author Carlos C
  */
-public class Objeto {
+public class Objeto extends Cosa {
     private String tipo;
-    private String nombre;
-    private String precio;
-    private String descripcion;
+    private int id;
     private String imagen;
     
     public Objeto() {
     }
 
-    public Objeto(String tipo, String nombre, String precio, String descripcion, String imagen){
+//    public Objeto(String tipo, String nombre, String precio, String descripcion, String imagen) {
+//        this.tipo = tipo;
+//        this.nombre = nombre;
+//        this.precio = precio;
+//        this.descripcion = descripcion;
+//        this.imagen = imagen;
+//    }
+
+    public Objeto(String tipo,int id,String imagen) {
         this.tipo = tipo;
-        this.nombre  = nombre;
-        this.precio = precio;
-        this.descripcion = descripcion;
+        this.id = id;
         this.imagen = imagen;
     }
-    public String getImagen() {
-        return imagen;
-    }
 
-    public void setImagen(String imagen) {
+    public Objeto(String tipo,String nombre , String precio,String descripcion,String imagen) {
+        super(nombre, precio, descripcion);
+        this.tipo = tipo;
         this.imagen = imagen;
     }
-    
-    public String getPrecio() {
-        return precio;
+
+    public int getId() {
+        return id;
     }
 
-    public void setPrecio(String precio) {
-        this.precio = precio;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }   
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTipo() {
@@ -65,17 +52,22 @@ public class Objeto {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
     
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("").append(tipo);
-        sb.append(" | ").append(nombre);
+        sb.append(" | ").append(getNombre());
         sb.append('.');
         return sb.toString();
     }
-
-    
-    
 }
