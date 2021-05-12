@@ -67,21 +67,6 @@ public class AdminController{
         
    }
 
-   
-//   public void eliminar() throws SQLException{
-//       TiendaDAO tienda = new TiendaDAO();
-//       Objeto o = new Objeto();
-//       
-//        try{
-//            o = new Objeto(name.getText());
-//            tienda.conectar();
-//            tienda.EliminarObjeto(o);
-//            AlertaUtil.mostrarInfo("El objeto ha sido eliminado correctamente");
-//        }catch{
-//            AlertaUtil.mostrarError("Error al conectar con la base de datos" + sqle.getMessage());
-//        }
-//        tienda.desconectar();
-//   }
 
    @FXML
    public void eliminar() throws SQLException, ClassNotFoundException, IOException{
@@ -103,5 +88,27 @@ public class AdminController{
             tienda.desconectar();
         }
    }
-
+   @FXML
+   public void editar() throws SQLException, ClassNotFoundException, IOException{
+       TiendaDAO tienda = new TiendaDAO();
+       Objeto o = new Objeto();
+       int id = 0;
+       try{
+            tienda.conectar();
+            o.setNombre(name.getText());
+            o.setPrecio(price.getText());
+            id = tienda.SelectPrecioId(o);
+            tienda.EditarPrecioObjeto(o,id);
+            AlertaUtil.mostrarInfo("El objeto ha sido eliminado correctamente");
+ 
+        }catch (ClassNotFoundException cnfe) {
+            AlertaUtil.mostrarError("Error al iniciar la aplicación" + cnfe.getMessage());
+        } catch (SQLException sqle) {
+            AlertaUtil.mostrarError("Error al conectar con la base de datos" + sqle.getMessage());
+        } catch (IOException ioe) {
+            AlertaUtil.mostrarError("Error al cargar la aplicación" + ioe.getMessage());
+        } finally {
+            tienda.desconectar();
+        }
+    }
 }

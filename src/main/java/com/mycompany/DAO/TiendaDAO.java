@@ -121,4 +121,24 @@ public class TiendaDAO {
         sentencia.setInt(1, id);
         sentencia.executeUpdate();
     }
+//    Coger un nombre y relacionarlo con su id
+    public int SelectPrecioId (Objeto o) throws SQLException{
+        String sql = "SELECT id FROM items WHERE nombre = ?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, o.getNombre());
+        ResultSet resultado = sentencia.executeQuery();
+        int id = 0;
+        while(resultado.next()){
+            id = resultado.getInt(1);
+        }
+        return id;        
+    }
+//    Update para editar el precio
+    public void EditarPrecioObjeto (Objeto o, int id) throws SQLException{
+        String sql = "UPDATE tiendalol.items SET precio = ? WHERE id = ?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(2, o.getPrecio());
+        sentencia.setInt(1, id);
+        sentencia.executeUpdate();
+    }
 }
