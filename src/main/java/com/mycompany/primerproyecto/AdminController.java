@@ -99,7 +99,7 @@ public class AdminController{
             o.setPrecio(price.getText());
             id = tienda.SelectPrecioId(o);
             tienda.EditarPrecioObjeto(o,id);
-            AlertaUtil.mostrarInfo("El objeto ha sido eliminado correctamente");
+            AlertaUtil.mostrarInfo("El precio ha sido actualizado");
  
         }catch (ClassNotFoundException cnfe) {
             AlertaUtil.mostrarError("Error al iniciar la aplicación" + cnfe.getMessage());
