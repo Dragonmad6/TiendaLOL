@@ -45,6 +45,8 @@ public class MercadoController{
         TiendaDAO a = new TiendaDAO();
         try {
             a.conectar();
+            List<Objeto> recursos = a.items();
+        lista.setItems(FXCollections.observableList(recursos));
         } catch (SQLException sqle) {
             AlertaUtil.mostrarError("El nombre o contraseña son incorrectos." + sqle.getMessage());
         } catch (ClassNotFoundException cnfe) {
@@ -54,8 +56,6 @@ public class MercadoController{
         } finally {
             a.desconectar();
         }
-        List<Objeto> recursos = a.items();
-        lista.setItems(FXCollections.observableList(recursos));
     }
     
     @FXML

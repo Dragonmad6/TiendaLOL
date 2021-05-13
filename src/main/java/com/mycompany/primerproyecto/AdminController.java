@@ -76,7 +76,7 @@ public class AdminController{
         try{
             tienda.conectar();
             o.setNombre(name.getText());
-            tienda.EliminaridObjeto(tienda.EliminarObjeto(o));
+            tienda.EliminarObjeto(tienda.SelectId(o));
             
             AlertaUtil.mostrarInfo("El objeto ha sido eliminado correctamente");
  
@@ -97,9 +97,16 @@ public class AdminController{
             tienda.conectar();
             o.setNombre(name.getText());
             o.setPrecio(price.getText());
-            id = tienda.SelectPrecioId(o);
+            id = tienda.SelectId(o);
             tienda.EditarPrecioObjeto(o,id);
-            AlertaUtil.mostrarInfo("El precio ha sido actualizado");
+            if(name.getText() == ""){
+                AlertaUtil.mostrarError("Debe rellenar los siguientes campos (nombre y precio).");
+            }
+            if(price.getText() == ""){
+                AlertaUtil.mostrarError("Debe rellenar los siguientes campos (nombre y precio).");
+            }else{
+                AlertaUtil.mostrarInfo("El precio ha sido actualizado");
+            }         
  
         }catch (ClassNotFoundException cnfe) {
             AlertaUtil.mostrarError("Error al iniciar la aplicación" + cnfe.getMessage());

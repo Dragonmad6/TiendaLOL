@@ -38,21 +38,22 @@ public class PrimaryController {
         TiendaDAO tienda = new TiendaDAO();
         Usuario u = new Usuario();
 
-        u = new Usuario(name.getText(), pass.getText());
         try {
             tienda.conectar();
             Usuario us = new Usuario();
-            us  = tienda.LogearUsuario(u);
+            u = new Usuario(name.getText(), pass.getText());
+
+            us = tienda.LogearUsuario(u);
             String nombre = "carlosc";
             String password = "01478520C";
 
             if(name.getText().equals(nombre) && pass.getText().equals(password)){
                 App.loadMercadoAdmin();
             }
-            else if(name.getText().equals(us.getNombre()) && pass.getText().equals(us.getPassword())){
+             if(name.getText().equals(us.getNombre()) && pass.getText().equals(us.getPassword())){
               App.loadMercado();
             }
-        else{
+            else{
                 AlertaUtil.mostrarError("Nombre de usuario o contraseña incorrecto.");
             }
 //            boolean pruebalogin = tienda.LogearUsuario(u);
@@ -62,12 +63,13 @@ public class PrimaryController {
 //                AlertaUtil.mostrarError("Nombre de usuario o contraseña incorrecto.");
 //            }
         } catch (SQLException sqle) {
-            AlertaUtil.mostrarError("El nombre o contraseña son incorrectos." + sqle.getMessage());
+            AlertaUtil.mostrarError(sqle.getMessage());
         } catch (ClassNotFoundException cnfe) {
             AlertaUtil.mostrarError("Error al iniciar la aplicación" + cnfe.getMessage());
         } catch (IOException ioe) {
             AlertaUtil.mostrarError("Error al cargar la aplicación" + ioe.getMessage());
-        } finally {
+        } 
+        finally {
             tienda.desconectar();
         }
     }

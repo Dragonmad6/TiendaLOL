@@ -68,10 +68,37 @@ public class TiendaDAO {
         Usuario us = new Usuario();
 
         while(resultado.next()){
-            us.setNombre(resultado.getString(1));
-            us.setPassword(resultado.getString(2));
+            us.setNombre(resultado.getString(2));
+            us.setPassword(resultado.getString(3));
         }
         return us;
+    }
+    /*Coger el id*/
+    public int SelectIdUsuario (Usuario u) throws SQLException{
+        String sql = "SELECT idusuario FROM tiendalol.login WHERE nombre = ?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, u.getNombre());
+        ResultSet resultado = sentencia.executeQuery();
+        int idusuario = 0;
+        while(resultado.next()){
+            idusuario = resultado.getInt(1);
+        }
+        return idusuario;        
+    }
+    /*UPDATE de la contraseña del usuario normal*/
+    public void ActualizarContra (Usuario u, int idusuario) throws SQLException{
+        String sql = "UPDATE tiendalol.login SET contrasena = ? WHERE contrasena = ? AND nombre = ? ";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, u.getPassword());
+        sentencia.setInt(2, idusuario);
+        sentencia.executeUpdate();
+    }
+    /*DELETE usuario*/
+    public void EliminarUSUARIO (int idusuario) throws SQLException{
+        String sql = "DELETE FROM tiendalol.login WHERE idusuario = ?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, idusuario);
+        sentencia.executeUpdate();
     }
     /*SELECTS de la lista de objetos que hay en la base de datos*/
     
@@ -103,8 +130,8 @@ public class TiendaDAO {
         sentencia.setString(5, o.getImagen());
         sentencia.executeUpdate();
     }
-//    Metodo para eliminar un objeto creado o registrado en al BD.
-    public int EliminarObjeto (Objeto o) throws SQLException{
+// Coger el id
+    public int SelectId (Objeto o) throws SQLException{
         String sql = "SELECT id FROM items WHERE nombre = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setString(1, o.getNombre());
@@ -115,30 +142,19 @@ public class TiendaDAO {
         }
         return id;        
     }
-    public void EliminaridObjeto (int id) throws SQLException{
+    /*DELETE un objeto*/
+    public void EliminarObjeto (int id) throws SQLException{
         String sql = "DELETE FROM tiendalol.items WHERE id = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, id);
         sentencia.executeUpdate();
     }
-//    Coger un nombre y relacionarlo con su id
-    public int SelectPrecioId (Objeto o) throws SQLException{
-        String sql = "SELECT id FROM items WHERE nombre = ?";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setString(1, o.getNombre());
-        ResultSet resultado = sentencia.executeQuery();
-        int id = 0;
-        while(resultado.next()){
-            id = resultado.getInt(1);
-        }
-        return id;        
-    }
 //    Update para editar el precio
     public void EditarPrecioObjeto (Objeto o, int id) throws SQLException{
         String sql = "UPDATE tiendalol.items SET precio = ? WHERE id = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setString(2, o.getPrecio());
-        sentencia.setInt(1, id);
+        sentencia.setString(1, o.getPrecio());
+        sentencia.setInt(2, id);
         sentencia.executeUpdate();
     }
 }
