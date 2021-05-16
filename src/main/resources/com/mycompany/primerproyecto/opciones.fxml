@@ -19,9 +19,9 @@
                </font>
             </Text>
             <Text fill="WHITE" layoutX="49.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nueva Contraseña" wrappingWidth="199.0" />
-            <TextField fx:id="establece" layoutX="49.0" layoutY="123.0" prefHeight="25.0" prefWidth="232.0" promptText="Contraseña Antigua" />
+            <TextField fx:id="anti" layoutX="49.0" layoutY="158.0" prefHeight="25.0" prefWidth="232.0" promptText="Contraseña Antigua" />
             <ImageView fx:id="imagen" fitHeight="136.0" fitWidth="163.0" layoutX="474.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" />
-            <TextField fx:id="contra" layoutX="49.0" layoutY="171.0" prefHeight="25.0" prefWidth="232.0" promptText="Nueva Contraseña" />
+            <TextField fx:id="newcontra" layoutX="49.0" layoutY="191.0" prefHeight="25.0" prefWidth="232.0" promptText="Nueva Contraseña" />
             <Button layoutX="84.0" layoutY="339.0" mnemonicParsing="false" onAction="#eliminarUsuario" prefHeight="25.0" prefWidth="163.0" text="ELIMINAR CUENTA">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
@@ -32,13 +32,13 @@
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </Button>
-            <Hyperlink layoutX="89.0" layoutY="264.0" onAction="#Hyper" text="Necesitas más ayuda" underline="true" />
             <ImageView fx:id="image" fitHeight="208.0" fitWidth="245.0" layoutX="325.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="62.0" layoutY="215.0" mnemonicParsing="false" onAction="#eliminarUsuario" prefHeight="23.0" prefWidth="207.0" text="ACTUALIZAR CONTRASEÑA">
+            <Button layoutX="62.0" layoutY="242.0" mnemonicParsing="false" onAction="#actualiza" prefHeight="23.0" prefWidth="207.0" text="ACTUALIZAR CONTRASEÑA">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </Button>
+            <TextField fx:id="name" layoutX="50.0" layoutY="122.0" prefHeight="25.0" prefWidth="232.0" promptText="Nombre de usuario" />
          </children>
       </AnchorPane>
    </children>

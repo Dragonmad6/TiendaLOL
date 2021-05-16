@@ -34,7 +34,8 @@ public class mercadoAdminController{
     private TextField precio;
     @FXML
     private ImageView imagen;
-    
+    @FXML
+    private TextField look;
     
     private static TiendaDAO a;
     private Objeto objSel;
@@ -81,5 +82,14 @@ public class mercadoAdminController{
         App.loadAdmin();
         AlertaUtil.mostrarInfo("Recuerde que al eliminar un objeto solo requiere su nombre.");
     }
+    
+//    @FXML 
+//    private void search()throws IOException{
+//        Objeto o = new Objeto();
+//        o.setNombre(look.getText());
+//        if(o.getNombre() == ArrayLis){
+//           seleccionarObjeto() 
+//        }
+//    } 
     
 }

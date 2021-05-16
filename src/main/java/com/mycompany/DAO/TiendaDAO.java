@@ -86,11 +86,12 @@ public class TiendaDAO {
         return idusuario;        
     }
     /*UPDATE de la contraseña del usuario normal*/
-    public void ActualizarContra (Usuario u, int idusuario) throws SQLException{
+    public void ActualizarContra (Usuario u, String contrasenaAntigua) throws SQLException{
         String sql = "UPDATE tiendalol.login SET contrasena = ? WHERE contrasena = ? AND nombre = ? ";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setString(1, u.getPassword());
-        sentencia.setInt(2, idusuario);
+        sentencia.setString(2, contrasenaAntigua);
+        sentencia.setString(3, u.getNombre());
         sentencia.executeUpdate();
     }
     /*DELETE usuario*/
@@ -155,6 +156,14 @@ public class TiendaDAO {
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setString(1, o.getPrecio());
         sentencia.setInt(2, id);
+        sentencia.executeUpdate();
+    }
+    
+//   Buscador de Objeto
+    public void BuscarObjeto (Objeto o) throws SQLException{
+        String sql = "SELECT nombre FROM tiendalol.items WHERE nombre = ?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, o.getNombre());
         sentencia.executeUpdate();
     }
 }
