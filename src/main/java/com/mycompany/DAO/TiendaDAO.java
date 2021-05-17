@@ -160,18 +160,21 @@ public class TiendaDAO {
     }
     
 //   Buscador de Objeto
-    public Objeto BuscarObjeto (String nombre) throws SQLException{
-        String sql = "SELECT * FROM tiendalol.items WHERE nombre = ?";
+    public List<Objeto> BuscarObjeto() throws SQLException{
+        List<Objeto> objetosExterno = new ArrayList<>();
+        String sql = "SELECT t.tipo,i.nombre,i.precio,i.descripcion,i.foto FROM items i INNER JOIN tipoitem t ON i.tipo = t.idtipo WHERE tipo = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         ResultSet resultado = sentencia.executeQuery();
-        Objeto o = new Objeto();
-        while(resultado.next()){
-            o.setId(resultado.getInt(1));
-            o.setTipo(resultado.getString(2));
-            o.setNombre(resultado.getString(3));
-            o.setDescripcion(resultado.getString(4));
-            o.setImagen(resultado.getString(5));
+        /*Bucle para mostrar todos los objetos*/
+        while (resultado.next()){
+            Objeto objetoInterno = new Objeto();
+            objetoInterno.setTipo(resultado.getString(1));
+            objetoInterno.setNombre(resultado.getString(2));
+            objetoInterno.setPrecio(resultado.getString(3));
+            objetoInterno.setDescripcion(resultado.getString(4));
+            objetoInterno.setImagen(resultado.getString(5));
+            objetosExterno.add(objetoInterno);
         }
-        return o;  
+        return objetosExterno;
     }
 }

@@ -54,8 +54,13 @@
                </font>
             </Button>
             <Text fill="WHITE" layoutX="33.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ruta Imagen" wrappingWidth="199.0" />
-            <TextField fx:id="vimage" layoutX="33.0" layoutY="213.0" prefHeight="25.0" prefWidth="218.0" text="/objetoimagenes/" />
+            <TextField fx:id="vimage" layoutX="33.0" layoutY="213.0" prefHeight="25.0" prefWidth="153.0" />
             <TextArea fx:id="descript" layoutX="33.0" layoutY="337.0" prefHeight="51.0" prefWidth="250.0" />
+            <Button layoutX="199.0" layoutY="213.0" mnemonicParsing="false" onAction="#leerFicheroImagen" prefHeight="25.0" prefWidth="52.0" text="...">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

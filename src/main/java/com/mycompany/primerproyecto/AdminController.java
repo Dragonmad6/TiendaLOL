@@ -7,13 +7,17 @@ package com.mycompany.primerproyecto;
 
 import com.mycompany.DAO.TiendaDAO;
 import com.mycompany.entidades.Objeto;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -117,5 +121,21 @@ public class AdminController{
         } finally {
             tienda.desconectar();
         }
+    }
+    public void leerFicheroImagen(){
+
+        FileChooser dialogoFichero1 = new FileChooser();
+        dialogoFichero1.setTitle("Selecciona un fichero");
+        File fAbrir1 = dialogoFichero1.showOpenDialog(null);
+
+        if (fAbrir1 != null) {
+            vimage.setText("/objetoimagenes/"+fAbrir1.getName());
+            try {
+                Files.copy(fAbrir1.toPath(), (new File(System.getProperty("user.dir")+"/src/main/resources/objetoimagenes/" + fAbrir1.getName())).toPath(),
+                        StandardCopyOption.REPLACE_EXISTING); //copia
+            } catch (IOException ioe) {
+                AlertaUtil.mostrarError("Error al cargar la aplicación" + ioe.getMessage());
+            }
+        } 
     }
 }
