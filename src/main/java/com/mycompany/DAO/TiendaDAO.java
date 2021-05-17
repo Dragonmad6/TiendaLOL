@@ -160,10 +160,18 @@ public class TiendaDAO {
     }
     
 //   Buscador de Objeto
-    public void BuscarObjeto (Objeto o) throws SQLException{
-        String sql = "SELECT nombre FROM tiendalol.items WHERE nombre = ?";
+    public Objeto BuscarObjeto (String nombre) throws SQLException{
+        String sql = "SELECT * FROM tiendalol.items WHERE nombre = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setString(1, o.getNombre());
-        sentencia.executeUpdate();
+        ResultSet resultado = sentencia.executeQuery();
+        Objeto o = new Objeto();
+        while(resultado.next()){
+            o.setId(resultado.getInt(1));
+            o.setTipo(resultado.getString(2));
+            o.setNombre(resultado.getString(3));
+            o.setDescripcion(resultado.getString(4));
+            o.setImagen(resultado.getString(5));
+        }
+        return o;  
     }
 }

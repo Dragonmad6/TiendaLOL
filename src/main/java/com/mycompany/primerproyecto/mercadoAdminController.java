@@ -9,6 +9,7 @@ import com.mycompany.DAO.TiendaDAO;
 import com.mycompany.entidades.Objeto;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
@@ -39,7 +40,7 @@ public class mercadoAdminController{
     
     private static TiendaDAO a;
     private Objeto objSel;
-    
+    private List<Objeto> recursos;
 
     public void relleno() throws SQLException{
         TiendaDAO a = new TiendaDAO();
@@ -83,13 +84,22 @@ public class mercadoAdminController{
         AlertaUtil.mostrarInfo("Recuerde que al eliminar un objeto solo requiere su nombre.");
     }
     
-//    @FXML 
-//    private void search()throws IOException{
-//        Objeto o = new Objeto();
-//        o.setNombre(look.getText());
-//        if(o.getNombre() == ArrayLis){
-//           seleccionarObjeto() 
-//        }
-//    } 
     
+    
+//    @FXML 
+//    private void search()throws IOException, SQLException{
+//        TiendaDAO a = new TiendaDAO();
+//        Objeto o = new Objeto();
+//         o = a.BuscarObjeto(n);
+//        o.setNombre(look.getText().equals(a.BuscarObjeto(n)));
+////        for(int i = 0; i < recursos.size(); i++){
+////         if(o.getNombre().equals(recursos)){
+////            recursos.get(i).getNombre();
+////            mercadoAdminController m = new mercadoAdminController();
+////            m.seleccionarObjeto(nombre);
+////         }
+////        }
+//    lista.getSelectionModel().select(o);
+//    } 
+   
 }

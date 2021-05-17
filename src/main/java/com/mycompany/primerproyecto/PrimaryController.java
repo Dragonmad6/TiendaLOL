@@ -50,7 +50,7 @@ public class PrimaryController {
             if(name.getText().equals(nombre) && pass.getText().equals(password)){
                 App.loadMercadoAdmin();
             }
-             if(name.getText().equals(us.getNombre()) && pass.getText().equals(us.getPassword())){
+            else if(name.getText().equals(us.getNombre()) && pass.getText().equals(us.getPassword())){
               App.loadMercado();
             }
             else{
