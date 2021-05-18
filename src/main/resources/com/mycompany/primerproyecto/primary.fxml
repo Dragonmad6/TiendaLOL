@@ -22,8 +22,8 @@
                   <Font name="Arial Rounded MT Bold" size="23.0" />
                </font>
             </Text>
-            <TextField fx:id="name" layoutX="62.0" layoutY="152.0" prefHeight="25.0" prefWidth="206.0" promptText="Nombre de usuario" text="carlosc" />
-            <PasswordField fx:id="pass" layoutX="62.0" layoutY="232.0" prefHeight="25.0" prefWidth="206.0" text="01478520C" />
+            <TextField fx:id="name" layoutX="62.0" layoutY="152.0" prefHeight="25.0" prefWidth="206.0" promptText="Nombre de usuario" />
+            <PasswordField fx:id="pass" layoutX="62.0" layoutY="232.0" prefHeight="25.0" prefWidth="206.0" promptText="Contraseña" />
             <Button fx:id="login" layoutX="115.0" layoutY="279.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="101.0" text="LOGIN">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
