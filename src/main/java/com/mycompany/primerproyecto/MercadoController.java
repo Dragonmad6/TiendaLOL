@@ -35,7 +35,8 @@ public class MercadoController{
     private TextField precio;
     @FXML
     private ImageView imagen;
-    
+    @FXML
+    private TextField look;
     
     private static TiendaDAO a;
     private Objeto objSel;
@@ -97,5 +98,28 @@ public class MercadoController{
     private void opciones() throws IOException {
         App.loadOpciones();
     }
-    
+    @FXML
+    /**
+     * Metodo para buscar 
+     * Un TIPO de Objeto 
+     * Rellenar el TextField y buscar
+     */
+    private void search()throws IOException, SQLException{
+        TiendaDAO a = new TiendaDAO();
+        lista.getItems().clear();
+        
+         try {
+            a.conectar();
+            List<Objeto> recursos = a.BuscarObjeto(look.getText());
+            lista.setItems(FXCollections.observableList(recursos));
+        }  catch (SQLException sqle) {
+            AlertaUtil.mostrarError("El nombre o contraseña son incorrectos." + sqle.getMessage());
+        } catch (ClassNotFoundException cnfe) {
+            AlertaUtil.mostrarError("Error al iniciar la aplicación" + cnfe.getMessage());
+        } catch (IOException ioe) {
+            AlertaUtil.mostrarError("Error al cargar la aplicación" + ioe.getMessage());
+        } finally {
+            a.desconectar();
+        }
+    }     
 }
