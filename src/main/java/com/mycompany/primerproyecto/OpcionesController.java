@@ -7,20 +7,12 @@ package com.mycompany.primerproyecto;
 
 import com.mycompany.DAO.TiendaDAO;
 import com.mycompany.entidades.Usuario;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -39,23 +31,27 @@ public class OpcionesController {
     private TextField name;
 
     @FXML
+    /**
+     * Metodo de cargar una imagen de una ruta
+     */
     public void loadImage1() {
         Image img = new Image(getClass().getResourceAsStream("/images/mates.png"));
         image.setImage(img);
     }
 
     @FXML
+    /**
+     * Metodo para cambiar de Ventana a Mercado
+     */
     private void atras2() throws IOException, SQLException {
         App.loadMercado();
     }
-
+    
     @FXML
-    private void Hyper(ActionEvent e) {
-        Hyperlink link = new Hyperlink("/Formulario/Formulario.html");
-        App.class.getResource("/Formulario/Formulario.html");
-    }
-
-    @FXML
+    /**
+     * Metodo para actualizar la contraseña 
+     * Rellenar los TextFields
+     */
     private void actualiza() throws IOException, SQLException {
         TiendaDAO tienda = new TiendaDAO();
         Usuario u = new Usuario();
@@ -86,6 +82,10 @@ public class OpcionesController {
     }
 
     @FXML
+    /**
+     * Metodo para Eliminar un Usuario 
+     * Rellenar el TextField de nombre
+     */
     public void eliminarUsuario() throws SQLException, ClassNotFoundException, IOException {
         TiendaDAO tienda = new TiendaDAO();
         Usuario u = new Usuario();
@@ -108,23 +108,5 @@ public class OpcionesController {
         } finally {
             tienda.desconectar();
         }
-    }
-//    @FXML
-//        public void leerFicheroImagen(){
-//
-//        FileChooser dialogoFichero1 = new FileChooser();
-//        dialogoFichero1.setTitle("Selecciona un fichero");
-//        File fAbrir1 = dialogoFichero1.showOpenDialog(null);
-//
-//        if (fAbrir1 != null) {
-//            imagen.setText(fAbrir1.getName());
-//            try {
-//                Files.copy(fAbrir1.toPath(), (new File(System.getProperty("user.dir")+"/objetoimagenes/" + fAbrir1.getName())).toPath(),
-//                        StandardCopyOption.REPLACE_EXISTING); //copia
-//            } catch (IOException ex) {
-//                Logger.getLogger(?.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        } 
-//    }
-    
+    }    
 }

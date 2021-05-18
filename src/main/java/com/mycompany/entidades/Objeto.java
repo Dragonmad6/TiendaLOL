@@ -14,29 +14,40 @@ public class Objeto extends Cosa {
     private int id;
     private String imagen;
     
+    /**
+     * Constructor VACIO
+     */
     public Objeto() {
     }
-
-//    public Objeto(String tipo, String nombre, String precio, String descripcion, String imagen) {
-//        this.tipo = tipo;
-//        this.nombre = nombre;
-//        this.precio = precio;
-//        this.descripcion = descripcion;
-//        this.imagen = imagen;
-//    }
-
+    
+    /**
+     * Constructor con PARAMETROS
+     * @param tipo
+     * @param id
+     * @param imagen 
+     */
     public Objeto(String tipo,int id,String imagen) {
         this.tipo = tipo;
         this.id = id;
         this.imagen = imagen;
     }
-
+    /**
+     * Constructor con PARAMETROS
+     * @param tipo
+     * @param nombre
+     * @param precio
+     * @param descripcion
+     * @param imagen 
+     */
     public Objeto(String tipo,String nombre , String precio,String descripcion,String imagen) {
         super(nombre, precio, descripcion);
         this.tipo = tipo;
         this.imagen = imagen;
     }
-
+    /**
+     * GETTERS & SETTERS
+     * @return 
+     */
     public int getId() {
         return id;
     }
@@ -61,7 +72,10 @@ public class Objeto extends Cosa {
         this.imagen = imagen;
     }
     
-
+    /**
+     * To STRING
+     * @return 
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

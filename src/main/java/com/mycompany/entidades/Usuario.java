@@ -16,28 +16,48 @@ public class Usuario {
     private String password;
     private String email;
     
-    //Constructor vacio
+    /**
+     * Constructor VACIO
+     */
     public Usuario(){
-        
     }
-    //constructor parametros
+    /**
+     * Constructor con PARAMETROS
+     * @param idUsuario
+     * @param nombre
+     * @param password
+     * @param email 
+     */
     public Usuario(int idUsuario,String nombre, String password, String email){
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.password = password;
         this.email  = email;
     }
+    /**
+     * Constructor con PARAMETROS
+     * @param nombre
+     * @param password
+     * @param email 
+     */
     public Usuario(String nombre, String password, String email){
         this.nombre = nombre;
         this.password = password;
         this.email  = email;
     }
-
+    /**
+     * Constructor con PARAMETROS
+     * @param nombre
+     * @param password 
+     */
     public Usuario(String nombre, String password){
         this.nombre = nombre;
         this.password = password;
     }
-     //Getter y Setters
+    /**
+     * GETTERS & SETTERS
+     * @return 
+     */
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -69,7 +89,11 @@ public class Usuario {
         this.email = email;
     }
     
-    //Metodo nombre
+    /**
+     * Metodo de caracteristicas que debe tener el NOMBRE DE USUARIO
+     * @param nombre
+     * @return 
+     */
     public boolean nombreUsuario(String nombre){
         if (nombre.length()>=4){
             return true;
@@ -77,7 +101,11 @@ public class Usuario {
             return false;
         }
     }
-    //Metodo contraseña correcta
+    /**
+     * Metodo de caracteristicas que debe tener la CONTRASEÑA
+     * @param password
+     * @return 
+     */
     public boolean passwordtrue(String password){
         if(password.length() <= 10){
             if(password.matches(".*[A-Z].*")){
@@ -88,7 +116,11 @@ public class Usuario {
         }
         //tambien es posible con un "return email.matches(.*@.*) ? 0:1;"
     }
-    //Metodo del email
+    /**
+     * Metodo de VERIFICACION de las caracteristicas de un correo
+     * @param email
+     * @return 
+     */
     public boolean emailVerificado(String email){
         if(email.matches("[-\\w\\.]+@\\w+\\.\\w+")){
             return true;

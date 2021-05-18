@@ -8,7 +8,8 @@ package com.mycompany.primerproyecto;
 import javafx.scene.control.Alert;
 
 /**
- *
+ * Metodo para mostrar Error e Info
+ * En ventana emergente
  * @author Carlos C
  */
 public class AlertaUtil {

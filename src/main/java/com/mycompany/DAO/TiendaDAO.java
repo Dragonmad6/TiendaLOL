@@ -28,9 +28,13 @@ public class TiendaDAO {
     
     private Connection conexion;
     
-
+    /**
+     * Metodo para conectarse a la BD
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     * @throws IOException 
+     */
     public void conectar() throws ClassNotFoundException, SQLException, IOException {
-        
         Properties configuration = new Properties();
         configuration.load(new FileInputStream(new File(App.class.getResource("connectionDB.properties").getPath())));
         String host = configuration.getProperty("host");
@@ -42,13 +46,21 @@ public class TiendaDAO {
         conexion = DriverManager.getConnection("jdbc:mariadb://" + host + ":" + port + "/" + name + "?serverTimezone=UTC",
                 username, password);
     }
-    
+    /**
+     * Metodo para desconectarse de la BD
+     * @throws SQLException 
+     */
     public void desconectar() throws SQLException{
         conexion.close();
     }
     
-    /*INSERTS para el usuario*/
-    
+    /**
+     * Metodo para Insertar un NUEVO Usuario en la Tabla usuario de la BD
+     * @param u
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException 
+     */    
     public void InsertarUsuario(Usuario u) throws SQLException,ClassNotFoundException, IOException{
         String sql = "INSERT INTO tiendalol.login (nombre,contrasena,email) VALUES(?,?,?)";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -57,8 +69,14 @@ public class TiendaDAO {
         sentencia.setString(3, u.getEmail());
         sentencia.executeUpdate();
     }
-    /*SELECT del usuario para logearse*/
-    
+    /**
+     * Metodo para Saber que usuarios estan Registrados en la BD
+     * @param u
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException 
+     */
     public Usuario LogearUsuario (Usuario u) throws SQLException,ClassNotFoundException, IOException{
         String sql = "SELECT * FROM tiendalol.login WHERE nombre = ? AND contrasena = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -73,7 +91,13 @@ public class TiendaDAO {
         }
         return us;
     }
-    /*Coger el id*/
+
+    /**
+     * Metodo que asocia a cada Usuario con su ID correspondiente
+     * @param u
+     * @return
+     * @throws SQLException 
+     */
     public int SelectIdUsuario (Usuario u) throws SQLException{
         String sql = "SELECT idusuario FROM tiendalol.login WHERE nombre = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -85,7 +109,12 @@ public class TiendaDAO {
         }
         return idusuario;        
     }
-    /*UPDATE de la contraseña del usuario normal*/
+    /**
+     * Metodo para actualizar la contraseña de un usuario concreto
+     * @param u
+     * @param contrasenaAntigua
+     * @throws SQLException 
+     */
     public void ActualizarContra (Usuario u, String contrasenaAntigua) throws SQLException{
         String sql = "UPDATE tiendalol.login SET contrasena = ? WHERE contrasena = ? AND nombre = ? ";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -94,15 +123,22 @@ public class TiendaDAO {
         sentencia.setString(3, u.getNombre());
         sentencia.executeUpdate();
     }
-    /*DELETE usuario*/
+    /**
+     * Metodo para eliminar a un usuario segun su ID de la BD
+     * @param idusuario
+     * @throws SQLException 
+     */
     public void EliminarUSUARIO (int idusuario) throws SQLException{
         String sql = "DELETE FROM tiendalol.login WHERE idusuario = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, idusuario);
         sentencia.executeUpdate();
     }
-    /*SELECTS de la lista de objetos que hay en la base de datos*/
-    
+    /**
+     * Metodo que selecciona los objeto con su tipo, descripcion y precio de la BD
+     * @return
+     * @throws SQLException 
+     */
     public List<Objeto> items() throws SQLException{
         List<Objeto> objetosExterno = new ArrayList<>();
         String sql = "SELECT t.tipo,i.nombre,i.precio,i.descripcion,i.foto FROM items i INNER JOIN tipoitem t ON i.tipo = t.idtipo";
@@ -120,7 +156,11 @@ public class TiendaDAO {
         }
         return objetosExterno;
     }
-//   Inserta un objeto con sus caracteristicas en la BD
+    /**
+     * Metodo para crear un objeto nuevo con todas sus características
+     * @param o
+     * @throws SQLException 
+     */
     public void InsertarObjeto (Objeto o) throws SQLException{
         String sql = "INSERT INTO tiendalol.items (tipo,nombre,precio,descripcion,foto) VALUES (?,?,?,?,?)";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -131,7 +171,12 @@ public class TiendaDAO {
         sentencia.setString(5, o.getImagen());
         sentencia.executeUpdate();
     }
-// Coger el id
+    /**
+     * Seleccionar el ID de un Objeto
+     * @param o
+     * @return
+     * @throws SQLException 
+     */
     public int SelectId (Objeto o) throws SQLException{
         String sql = "SELECT id FROM items WHERE nombre = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -143,14 +188,23 @@ public class TiendaDAO {
         }
         return id;        
     }
-    /*DELETE un objeto*/
+    /**
+     * Metodo para ELIMINAR un objeto de la BD
+     * @param id
+     * @throws SQLException 
+     */
     public void EliminarObjeto (int id) throws SQLException{
         String sql = "DELETE FROM tiendalol.items WHERE id = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, id);
         sentencia.executeUpdate();
     }
-//    Update para editar el precio
+    /**
+     * ACTUALIZAR el PRECIO de un Objeto
+     * @param o
+     * @param id
+     * @throws SQLException 
+     */
     public void EditarPrecioObjeto (Objeto o, int id) throws SQLException{
         String sql = "UPDATE tiendalol.items SET precio = ? WHERE id = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -159,7 +213,12 @@ public class TiendaDAO {
         sentencia.executeUpdate();
     }
     
-//   Buscador de Objeto
+    /**
+     * Metodo para Buscar un Objeto segun su TIPO
+     * @param nombre
+     * @return
+     * @throws SQLException 
+     */
     public List<Objeto> BuscarObjeto (String nombre) throws SQLException{
         List<Objeto> objetosExterno = new ArrayList<>();
         String sql = "SELECT t.tipo,i.nombre,i.precio,i.descripcion,i.foto FROM items i INNER JOIN tipoitem t ON i.tipo = t.idtipo WHERE i.tipo = (SELECT idtipo FROM tipoitem WHERE tipo = ?)";

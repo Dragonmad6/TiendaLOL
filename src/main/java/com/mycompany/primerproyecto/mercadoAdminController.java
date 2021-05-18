@@ -41,6 +41,11 @@ public class mercadoAdminController {
     private Objeto objSel;
     private List<Objeto> recursos;
 
+    @FXML
+    /**
+     * Metodo de relleno de la ListView
+     * Segun el metodo en la TIENDA.DAO
+     */
     public void relleno() throws SQLException {
         TiendaDAO a = new TiendaDAO();
         lista.getItems().clear();
@@ -61,6 +66,10 @@ public class mercadoAdminController {
     }
 
     @FXML
+    /**
+     * Metodo de cargar un objeto al SELECCIONARLO 
+     * Rellena los TextFields 
+     */
     private void cargarObjeto(Objeto obj) {
         Image img = new Image(getClass().getResourceAsStream(obj.getImagen()));
         precio.setText(obj.getPrecio());
@@ -69,23 +78,38 @@ public class mercadoAdminController {
     }
 
     @FXML
+    /**
+     * Deja un Objeto Seleccionado
+     * En azul (Click)
+     */
     public void seleccionarObjeto(Event event) {
         objSel = (Objeto) lista.getSelectionModel().getSelectedItem();
         cargarObjeto(objSel);
     }
 
     @FXML
+    /**
+     * Metodo para cambiar de Ventana a PRIMARY
+     */
     private void atras() throws IOException {
         App.setRoot("primary");
     }
 
     @FXML
+    /**
+     * Metodo de cambiar de Ventana a OPCIONES
+     */
     private void opciones() throws IOException {
         App.loadAdmin();
         AlertaUtil.mostrarInfo("Recuerde que al eliminar un objeto solo requiere su nombre.");
     }
 
     @FXML 
+    /**
+     * Metodo para buscar 
+     * Un TIPO de Objeto 
+     * Rellenar el TextField y buscar
+     */
     private void search()throws IOException, SQLException{
         TiendaDAO a = new TiendaDAO();
         lista.getItems().clear();

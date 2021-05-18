@@ -14,15 +14,27 @@ public abstract class Cosa {
     private String precio;
     private String descripcion;
 
+    /**
+     * Constructor VACIO
+     */
     public Cosa() {
     }
-
+    
+    /**
+     * Constructor con PARAMETROS
+     * @param nombre
+     * @param precio
+     * @param descripcion 
+     */
     public Cosa(String nombre, String precio, String descripcion) {
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
     }
-
+    /**
+     * GETTERS & SETTERS
+     * @return 
+     */
     public String getNombre() {
         return nombre;
     }

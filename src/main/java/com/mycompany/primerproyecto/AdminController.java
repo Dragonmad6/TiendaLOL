@@ -39,16 +39,26 @@ public class AdminController{
     @FXML
     private ImageView image;
     
+    /**
+     * Metodo para cargar la imagen del ImageView
+     */
     public void loadImage() {
         Image img = new Image(getClass().getResourceAsStream("/images/Garen.png"));
         image.setImage(img);
     }
     
     @FXML
+    /**
+     * Metodo para cargar la ventana de MERCADOADMIN
+     */
     public void atras3() throws IOException, SQLException{
         App.loadMercadoAdmin();
     }
     @FXML
+    /**
+     * Metodo para INSERTAR un objeto nuevo
+     * Rellena los TextField
+     */
     public void insertar() throws SQLException{
        TiendaDAO tienda = new TiendaDAO();
        Objeto o = new Objeto();
@@ -73,6 +83,10 @@ public class AdminController{
 
 
    @FXML
+   /**
+    * Metodo para ELIMINAR un Objeto de la BD
+    * Con poner su nombre en el TextField
+    */
    public void eliminar() throws SQLException, ClassNotFoundException, IOException{
        TiendaDAO tienda = new TiendaDAO();
        Objeto o = new Objeto();
@@ -93,6 +107,10 @@ public class AdminController{
         }
    }
    @FXML
+   /**
+    * Metodo para Editar un Objeto segun su PRECIO
+    * Poner el nombre del OBJETO y su PRECIO
+    */
    public void editar() throws SQLException, ClassNotFoundException, IOException{
        TiendaDAO tienda = new TiendaDAO();
        Objeto o = new Objeto();
@@ -122,6 +140,12 @@ public class AdminController{
             tienda.desconectar();
         }
     }
+   
+   @FXML
+   /**
+    * Metodo para leer un FICHERO
+    * Seleccionar el archivo y se guarda en su RUTA
+    */
     public void leerFicheroImagen(){
 
         FileChooser dialogoFichero1 = new FileChooser();

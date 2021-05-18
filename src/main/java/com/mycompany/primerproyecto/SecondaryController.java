@@ -26,17 +26,28 @@ public class SecondaryController {
     private ImageView imagen;
     
     @FXML
+    /**
+     * Metodo para cambiar de Ventana a PRIMARY
+     */
     private void inicio() throws IOException {
         App.setRoot("primary");
     }
     
     @FXML    
+    /**
+     * Metodo para cargar la imagen según la Ruta
+     */
     public void loadImage() {
         Image img = new Image(getClass().getResourceAsStream("/images/register1.png"));
         imagen.setImage(img);
     }
     
     @FXML
+    /**
+     * Metodo de Registrarse como usuario nuevo
+     * Rellenar los TextFields
+     * Cumpliendo con los requisitos
+     */
     public void registrarse() throws SQLException{
        TiendaDAO tienda = new TiendaDAO();
        Usuario u = new Usuario();

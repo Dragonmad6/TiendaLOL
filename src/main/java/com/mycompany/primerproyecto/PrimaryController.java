@@ -25,15 +25,28 @@ public class PrimaryController {
     private ImageView imagen;
 
     @FXML
+    /**
+     * Metodo para cargar la Imagen 
+     */
     public void loadImage() {
         Image img = new Image(getClass().getResourceAsStream("/images/cliente3.jpg"));
         imagen.setImage(img);
     }
     @FXML
+    /**
+     * Metodo para mostrar la imagen seleccionada según la ruta
+     */
     public void mostrar(){
         Image img = new Image(getClass().getResourceAsStream("/images/cliente3.jpg"));
         imagen.setImage(img);
     }
+    @FXML
+    /**
+     * Metodo para Iniciar Sesion en la APP
+     * Entrar como Usuario normal
+     * O en modo administrador
+     * Rellenar los TextFields
+     */
     public void login() throws SQLException, ClassNotFoundException, IOException {
         TiendaDAO tienda = new TiendaDAO();
         Usuario u = new Usuario();
@@ -56,12 +69,6 @@ public class PrimaryController {
             else{
                 AlertaUtil.mostrarError("Nombre de usuario o contraseña incorrecto.");
             }
-//            boolean pruebalogin = tienda.LogearUsuario(u);
-//            if (pruebalogin) {
-//                App.loadMercado();
-//            } else {
-//                AlertaUtil.mostrarError("Nombre de usuario o contraseña incorrecto.");
-//            }
         } catch (SQLException sqle) {
             AlertaUtil.mostrarError(sqle.getMessage());
         } catch (ClassNotFoundException cnfe) {

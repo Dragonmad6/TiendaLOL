@@ -40,7 +40,11 @@ public class MercadoController{
     private static TiendaDAO a;
     private Objeto objSel;
     
-
+    /**
+     * Metodo de relleno de la ListView
+     * Rellena todos los campos del metodo de TIENDA.DAO
+     * @throws SQLException 
+     */
     public void relleno() throws SQLException{
         TiendaDAO a = new TiendaDAO();
         try {
@@ -59,6 +63,10 @@ public class MercadoController{
     }
     
     @FXML
+    /**
+     * Metodo de cargar un objeto al SELECCIONARLO 
+     * Rellena los TextFields 
+     */
     private void cargarObjeto(Objeto obj) {
         Image img = new Image(getClass().getResourceAsStream(obj.getImagen()));
         precio.setText(obj.getPrecio());
@@ -67,15 +75,25 @@ public class MercadoController{
     }
     
     @FXML
+    /**
+     * Deja un Objeto Seleccionado
+     * En azul (Click)
+     */
     public void seleccionarObjeto(Event event) {
         objSel = (Objeto)lista.getSelectionModel().getSelectedItem();
         cargarObjeto(objSel);
     }
     @FXML
+    /**
+     * Metodo para cambiar de Ventana a PRIMARY
+     */
     private void atras() throws IOException {
         App.setRoot("primary");
     }
     @FXML
+    /**
+     * Metodo para cambiar de Ventana a Opciones
+     */
     private void opciones() throws IOException {
         App.loadOpciones();
     }
