@@ -85,26 +85,23 @@ public class mercadoAdminController {
         AlertaUtil.mostrarInfo("Recuerde que al eliminar un objeto solo requiere su nombre.");
     }
 
-//    @FXML
-//    private void search() throws IOException, SQLException {
-//        TiendaDAO a = new TiendaDAO();
-//        lista.getItems().clear();
-//        try {
-//            a.conectar();
-//            look.getText();
-//            List<Objeto> recursos = a.BuscarObjeto();
-//            lista.setItems(FXCollections.observableList(recursos));
-//        } catch (SQLException sqle) {
-//            AlertaUtil.mostrarError("El nombre o contraseña son incorrectos." + sqle.getMessage());
-//        } catch (ClassNotFoundException cnfe) {
-//            AlertaUtil.mostrarError("Error al iniciar la aplicación" + cnfe.getMessage());
-//        } catch (IOException ioe) {
-//            AlertaUtil.mostrarError("Error al cargar la aplicación" + ioe.getMessage());
-//        } finally {
-//            a.desconectar();
-//        }
-//
-//    }
-
-
+    @FXML 
+    private void search()throws IOException, SQLException{
+        TiendaDAO a = new TiendaDAO();
+        lista.getItems().clear();
+        
+         try {
+            a.conectar();
+            List<Objeto> recursos = a.BuscarObjeto(look.getText());
+            lista.setItems(FXCollections.observableList(recursos));
+        }  catch (SQLException sqle) {
+            AlertaUtil.mostrarError("El nombre o contraseña son incorrectos." + sqle.getMessage());
+        } catch (ClassNotFoundException cnfe) {
+            AlertaUtil.mostrarError("Error al iniciar la aplicación" + cnfe.getMessage());
+        } catch (IOException ioe) {
+            AlertaUtil.mostrarError("Error al cargar la aplicación" + ioe.getMessage());
+        } finally {
+            a.desconectar();
+        }
+    } 
 }

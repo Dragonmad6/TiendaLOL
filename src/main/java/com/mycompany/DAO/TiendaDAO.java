@@ -160,13 +160,13 @@ public class TiendaDAO {
     }
     
 //   Buscador de Objeto
-    public List<Objeto> BuscarObjeto() throws SQLException{
+    public List<Objeto> BuscarObjeto (String nombre) throws SQLException{
         List<Objeto> objetosExterno = new ArrayList<>();
-        String sql = "SELECT t.tipo,i.nombre,i.precio,i.descripcion,i.foto FROM items i INNER JOIN tipoitem t ON i.tipo = t.idtipo WHERE tipo = ?";
+        String sql = "SELECT t.tipo,i.nombre,i.precio,i.descripcion,i.foto FROM items i INNER JOIN tipoitem t ON i.tipo = t.idtipo WHERE i.tipo = (SELECT idtipo FROM tipoitem WHERE tipo = ?)";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, nombre);
         ResultSet resultado = sentencia.executeQuery();
-        /*Bucle para mostrar todos los objetos*/
-        while (resultado.next()){
+        while(resultado.next()){
             Objeto objetoInterno = new Objeto();
             objetoInterno.setTipo(resultado.getString(1));
             objetoInterno.setNombre(resultado.getString(2));
@@ -175,6 +175,6 @@ public class TiendaDAO {
             objetoInterno.setImagen(resultado.getString(5));
             objetosExterno.add(objetoInterno);
         }
-        return objetosExterno;
+        return objetosExterno;  
     }
 }
